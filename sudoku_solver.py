@@ -1,4 +1,4 @@
-def gerarTabuleiro(lista):
+def gerar_tabuleiro(lista):
     separador1 = "+-----------------------+"
     separador2 = "| "
 
@@ -21,8 +21,6 @@ def gerarTabuleiro(lista):
 
 
 def solucionar_tabuleiro(lista):
-    contador_quadrante = 0
-    valor_quadrante = []
     posicao_numero_vez = []
     possiveis_numeros = []
 
@@ -36,11 +34,8 @@ def solucionar_tabuleiro(lista):
             for i in range(0, 9):  # Loop de cada quadrante
                 quadrante_aux = []
                 quadrante = []
-                numero_permitido_quadrante = 0
-                numero_ja_foi = None
 
-                quadrante = quadrante_disponivel(i + 1,
-                                                 lista)  # Retorna uma lista com os números e a posição do quadrante
+                quadrante = quadrante_disponivel(i + 1, lista)  # Retorna uma lista com os números e a posição do quadrante
 
                 for i in range(0, len(quadrante)):  # Retornando apenas os valores dos quadrantes
                     quadrante_aux.append(quadrante[i][2])
@@ -135,13 +130,21 @@ def quadrante_disponivel(posicao, lista):
                              [8, 6, lista[6][8]], [8, 7, lista[7][8]], [8, 8, lista[8][8]]]
         return valores_quadrante
 
+## Matriz para teste do algoritmo
+# numeros_sudoku = [[5, 6, '.', 8, 4, 7, '.', '.', '.'],
+#		[3, '.', 9, '.', '.', '.', 6, '.', '.'],
+#		['.', '.', 8, '.', '.', '.', '.', '.', '.'],
+#		['.', 1, '.', '.', 8, '.', '.', 4, '.'],
+#		[7, 9, '.', 6, '.', 2, '.', 1, 8],
+#		['.', 5, '.', '.', 3, '.', '.', 9, '.'],
+#		['.', '.', '.', '.', '.', '.', 2, '.', '.'],
+#		['.', '.', 6, '.', '.', '.', 8, '.', 7], 
+#		['.', '.', '.', 3, 1, 6, '.', 5, 9]]
 
-# numeros = [[5, 6, '.', 8, 4, 7, '.', '.', '.'], [3, '.', 9, '.', '.', '.', 6, '.', '.'], ['.', '.', 8, '.', '.', '.', '.', '.', '.'], ['.', 1, '.', '.', 8, '.', '.', 4, '.'], [7, 9, '.', 6, '.', 2, '.', 1, 8], ['.', 5, '.', '.', 3, '.', '.', 9, '.'], ['.', '.', '.', '.', '.', '.', 2, '.', '.'], ['.', '.', 6, '.', '.', '.', 8, '.', 7],  ['.', '.', '.', 3, 1, 6, '.', 5, 9]]
+numeros_sudoku = [[], [], [], [], [], [], [], [], []]
 
-numeros = [[], [], [], [], [], [], [], [], []]
+for y in range(0, 9):
+    for x in range(0, 9):
+        numeros[y].append(input('Digite o número da casa x', x, 'e y', y, ':'))
 
-for i in range(0, 9):
-    for j in range(0, 9):
-        numeros[i].append(input('Digite o item: '))
-
-gerarTabuleiro(solucionar_tabuleiro(numeros))
+gerar_tabuleiro(solucionar_tabuleiro(numeros_sudoku))
